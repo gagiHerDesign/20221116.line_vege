@@ -25,9 +25,9 @@ import quickVege from './quick_replies_vege.js'
 import quickFruit from './quick_replies_fruits.js'
 import fetchCa from './commands/fetchCa.js'
 
-// import express from 'express'
+import express from 'express'
 
-// const app = express()
+const app = express()
 
 // // dyno用
 // import express from 'express'
@@ -102,18 +102,18 @@ eg: 查空心菜
   else if (event.message.text === '水果') event.reply(quickFruit)
 })
 
-bot.listen('/', process.env.PORT || 3000, () => {
-  console.log('機器人啟動')
-})
-
-// const linebotParser = bot.parser()
-
-// app.post('/', linebotParser)
-
-// app.get('/', (req, res) => {
-//   res.status(200).send('ok')
-// })
-
-// app.listen(process.env.PORT || 3000, () => {
+// bot.listen(process.env.PORT || 3000, () => {
 //   console.log('機器人啟動')
 // })
+
+const linebotParser = bot.parser()
+
+app.post('/', linebotParser)
+
+app.get('/', (req, res) => {
+  res.status(200).send('ok')
+})
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log('機器人啟動')
+})
